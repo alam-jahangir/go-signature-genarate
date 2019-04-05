@@ -19,8 +19,8 @@ func main() {
 
 
  // Generate Signature By SHP512 with IV
- key := []byte("sc7/KcdHz~K]=UeURC3&8@RdEZf`=``K") // 32 bytes
- plaintext1 := []byte(":G+7'ap}Dr&-3*BRAgR]Jz%/s=+cqGT_hXfDz!") //"some really really really long plaintext")
+ key := []byte("sc7/KcdHz~K]=UeURC3&8@RdEZf`=``K") // 32 bytes but we can use 16, 24 or 32 bytes
+ plaintext1 := []byte(":G+7'ap}Dr&-3*BRAgR]Jz%/s=+cqGT_hXfDz!")
  fmt.Printf("%s\n", plaintext1)
  ciphertext1, err := Signature.EncryptByIV(key, plaintext1)
  if err != nil {

@@ -1,8 +1,8 @@
 # Generate Signature and JWT Token
 Generate Signature by Different Algrorithm
 
-```GO
 ## Generate Signature By SHP with Passphrase
+```GO
 
  fmt.Println("Generate Signature By SHA by Passphrase ...")
  ciphertext := Signature.Encrypt([]byte("Hello World"), "UeURC3&8@")
@@ -14,11 +14,11 @@ Generate Signature by Different Algrorithm
 
 ```
 
-```GO
 ## Generate Signature By SHP512 with IV
+```GO
 
  key := []byte("sc7/KcdHz~K]=UeURC3&8@RdEZf`=``K") // 32 bytes
- plaintext1 := []byte(":G+7'ap}Dr&-3*BRAgR]Jz%/s=+cqGT_hXfDz!") //"some really really really long plaintext")
+ plaintext1 := []byte(":G+7'ap}Dr&-3*BRAgR]Jz%/s=+cqGT_hXfDz!")
  fmt.Printf("%s\n", plaintext1)
  ciphertext1, err := Signature.EncryptByIV(key, plaintext1)
  if err != nil {
@@ -32,9 +32,8 @@ Generate Signature by Different Algrorithm
  fmt.Printf("%s\n", result)
 ```
 
-```GO
 ## Generate Token By User Information
-
+```GO
  creds := Signature.Credentials{"Test", "jahangir", "jahangir033003@gmail.com"}
  token := Signature.GetToken(creds)
  fmt.Println(token)
