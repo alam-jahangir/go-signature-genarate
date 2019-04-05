@@ -8,14 +8,14 @@ import (
 
 func main() {
 
- // Generate Signature By SHP without IV
- fmt.Println("Starting the application...")
- ciphertext := Signature.Encrypt([]byte("Hello World"), "password")
+ // Generate Signature By SHP with Passphrase
+ fmt.Println("Generate Signature By SHA by Passphrase ...")
+ ciphertext := Signature.Encrypt([]byte("Hello World"), "UeURC3&8@")
  fmt.Printf("Encrypted: %x\n", ciphertext)
- plaintext := Signature.Decrypt(ciphertext, "password")
+ plaintext := Signature.Decrypt(ciphertext, "UeURC3&8@")
  fmt.Printf("Decrypted: %s\n", plaintext)
- Signature.EncryptFile("sample.txt", []byte("Hello World"), "password1")
- fmt.Println(string(Signature.DecryptFile("sample.txt", "password1")))
+ Signature.EncryptFile("sample.txt", []byte("Hello World"), "UeURC3&8@1")
+ fmt.Println(string(Signature.DecryptFile("sample.txt", "UeURC3&8@1")))
 
 
  // Generate Signature By SHP512 with IV
