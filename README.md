@@ -1,7 +1,7 @@
-# Generate Signature and JWT Token
+# Generate Signature by SHA256/SHA512 and JWT Token
 Generate Signature by Different Algrorithm
 
-## Generate Signature By SHP with Passphrase
+## Generate Signature By SHA with Passphrase
 ```GO
 
  fmt.Println("Generate Signature By SHA by Passphrase ...")
@@ -14,7 +14,7 @@ Generate Signature by Different Algrorithm
 
 ```
 
-## Generate Signature By SHP512 with IV
+## Generate Signature By SHA512 with IV
 ```GO
 
  key := []byte("sc7/KcdHz~K]=UeURC3&8@RdEZf`=``K") // 32 bytes
