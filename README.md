@@ -1,5 +1,5 @@
 # Generate Signature by SHA256/SHA512 Algorithm and JWT Token
-Generate Signature by Different Algrorithm
+Simple Go Application To Connect MySQL Database, Generate Signature and JWT Token 
 
 ## Database Connection
 ```sql
