@@ -64,29 +64,30 @@ func DecryptFile(filename string, passphrase string) []byte {
 }
 
 
-func EncryptByIV(key, text []byte) ([]byte, error) {
+func EncryptByIV(key, text []byte) (string, error) {
 	block, err := aes.NewCipher(key)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 	b := base64.StdEncoding.EncodeToString(text)
 	ciphertext := make([]byte, aes.BlockSize+len(b))
 	iv := ciphertext[:aes.BlockSize]
 	if _, err := io.ReadFull(rand.Reader, iv); err != nil {
-		return nil, err
+		return "", err
 	}
 	cfb := cipher.NewCFBEncrypter(block, iv)
 	cfb.XORKeyStream(ciphertext[aes.BlockSize:], []byte(b))
-	return ciphertext, nil
+	return hex.EncodeToString(ciphertext), nil
 }
 
-func DecryptByIV(key, text []byte) ([]byte, error) {
+func DecryptByIV(key []byte, ciphertext string) (string, error) {
+	text, _ := hex.DecodeString(ciphertext)
 	block, err := aes.NewCipher(key)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
 	if len(text) < aes.BlockSize {
-		return nil, errors.New("ciphertext too short")
+		return "", errors.New("ciphertext too short")
 	}
 	iv := text[:aes.BlockSize]
 	text = text[aes.BlockSize:]
@@ -94,9 +95,9 @@ func DecryptByIV(key, text []byte) ([]byte, error) {
 	cfb.XORKeyStream(text, text)
 	data, err := base64.StdEncoding.DecodeString(string(text))
 	if err != nil {
-		return nil, err
+		return "", err
 	}
-	return data, nil
+	return string(data), nil
 }
 
 

@@ -1,0 +1,20 @@
+{
+  "database": {
+    "driver": "mysql",
+    "host": "localhost",
+    "username": "zeshan",
+    "password": "123456",
+    "name": "test",
+    "port": "3306"
+  },
+  "redis": {
+    "host": "localhost",
+    "password": "12345"
+  },
+  "elasticsearch": {
+    "host": "localhost",
+    "password": "12345"
+  },
+  "host": "localhost",
+  "port": "8080"
+}
