@@ -89,6 +89,28 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Println("Token Credentials: ", credentials)
+	
+	// Generate Key Pair By User Information
+	var user = Signature.KeyPairUserInfo{
+		UserName: "jahangir",
+		UserEmail: "jahangir033003@gmail.com",
+		UserIp: "192.168.2.13",
+		UserAgent: "Mozilla Firefox",
+	}
+	keyPair, err := Signature.GenerateKeyPair(user)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(keyPair)
+        
+	// Decode App Key and Get Email Address from App Key
+	dkeyPair, err := Signature.GetEmailFromAppKey(keyPair.AppKey, keyPair.SecretKey)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(dkeyPair)
 }
 
 /*
